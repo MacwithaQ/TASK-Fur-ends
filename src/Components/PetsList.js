@@ -5,7 +5,7 @@ export default function PetsList(props) {
   const [type, setType] = useState("");
 
   const pets = props.pets
-    .filter((pet) => pet.name.toLowerCase().includes(query.toLocaleLowerCase())).filter(pet=>pet.type.includes(type))
+    .filter((pet) => pet.name.toLowerCase().includes(query.toLocaleLowerCase()) && pet.type.includes(type))
     .map((pet) => <PetItem key={pet.id} pet={pet} />);
 
   const onChangeType = (event) => {
