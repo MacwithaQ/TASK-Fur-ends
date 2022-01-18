@@ -1,16 +1,22 @@
-import React, { useEffect, useState } from "react";
+import {useState} from "react";
 import PetItem from "./PetItem";
-export default function PetsList(props) {
+import SearchBar from "./SearchBar.Js";
+
+
+
+export default function PetsList(petData) {
+  
   const [query, setQuery] = useState("");
   const [type, setType] = useState("");
 
-  const pets = props.pets
+  const pets = petData.pets
     .filter((pet) => pet.name.toLowerCase().includes(query.toLocaleLowerCase()) && pet.type.includes(type))
     .map((pet) => <PetItem key={pet.id} pet={pet} />);
 
   const onChangeType = (event) => {
     setType(event.target.value);
   };
+
   const onChangeSearch = (event) => {
     setQuery(event.target.value);
   };
@@ -24,16 +30,7 @@ export default function PetsList(props) {
               <h1 class="mb-25 wow fadeInUp" data-wow-delay=".2s">
                 Fur-ends
               </h1>
-              <div class="input-group rounded">
-                <input
-                  onChange={onChangeSearch}
-                  type="search"
-                  class="form-control rounded"
-                  placeholder="Search"
-                  aria-label="Search"
-                  aria-describedby="search-addon"
-                />
-              </div>
+              <SearchBar changeFunc={onChangeSearch} />
               <br />
               Type:
               <select class="form-select" onChange={onChangeType}>

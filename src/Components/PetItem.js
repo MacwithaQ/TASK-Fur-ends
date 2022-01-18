@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-export default function PetItem(props) {
+export default function PetItem({pet}) {
   
-  const pet = props.pet;
+  // const pet = props.pet;
 
   // petImage cannot be changed its constant with a default state defined in useState(....)
   // setPetImage is used in a function we create with whatever name to change the default value to whatever we want to
