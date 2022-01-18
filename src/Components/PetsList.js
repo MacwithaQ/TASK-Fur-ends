@@ -1,16 +1,17 @@
-import {useState} from "react";
+import { useState } from "react";
 import PetItem from "./PetItem";
-import SearchBar from "./SearchBar.Js";
-
-
+import SearchBar from "./SearchBar.js";
 
 export default function PetsList(petData) {
-  
   const [query, setQuery] = useState("");
   const [type, setType] = useState("");
 
   const pets = petData.pets
-    .filter((pet) => pet.name.toLowerCase().includes(query.toLocaleLowerCase()) && pet.type.includes(type))
+    .filter(
+      (pet) =>
+        pet.name.toLowerCase().includes(query.toLocaleLowerCase()) &&
+        pet.type.includes(type)
+    )
     .map((pet) => <PetItem key={pet.id} pet={pet} />);
 
   const onChangeType = (event) => {

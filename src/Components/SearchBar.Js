@@ -1,6 +1,6 @@
 import React from "react";
 
-const SearchBar = (changeFunc) => {
+const SearchBar = ({changeFunc}) => {
   return (
     <div class="input-group rounded">
       <input
